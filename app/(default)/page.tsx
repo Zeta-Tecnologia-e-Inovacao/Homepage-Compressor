@@ -8,7 +8,6 @@ import Hero from '../../components/hero'
 import Features from '../../components/features'
 import Newsletter from '../../components/newsletter'
 import Zigzag from '../../components/zigzag'
-import Testimonials from '../../components/testimonials'
 import Header from '../../components/ui/header';
   
   export default function Home() {
@@ -32,7 +31,6 @@ import Header from '../../components/ui/header';
         <Hero />
         <Features />
         <Zigzag />
-        {/* <Testimonials /> */}
         <Newsletter />
       </>
     )
