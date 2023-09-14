@@ -20,7 +20,7 @@ export default function Footer() {
                   <Image className=" fill-current" src={Logo} alt={'200'} width={170} height={24} />
                 </Link>
               </div>
-              <div className="text-gray-400">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+              <div className="text-gray-400">A tecnologia avança constantemente, e a busca por soluções mais sustentáveis e eficientes torna-se cada vez mais crucial. Nesse contexto, os compressores inteligentes despontam como uma inovação promissora.</div>
             </div>
 
             {/* 2nd, 3rd and 4th blocks */}
@@ -28,60 +28,62 @@ export default function Footer() {
 
               {/* 2nd block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Products</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Compressor</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Web Studio</Link>
+                    <Link href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Eficiência Energética</Link>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">DynamicBox Flex</Link>
+                    <Link href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Controle Remoto</Link>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Programming Forms</Link>
+                    <Link href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Manutenção Preventiva</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Monitoramento em Tempo Real</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Integração com Sistemas</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Redução de Ruído</Link>
                   </li>
                 </ul>
               </div>
 
               {/* 3rd block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Resources</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Home</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
+                    <a href="#about" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Sobre nós</a>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Visual mockups</Link>
+                    <a href="#compressor" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Compressor</a>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
+                    <a href="#contact" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Contato</a>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Visual mockups</Link>
+                    <Link href="/signin" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Sign in</Link>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
+                    <Link href="/signup" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Sign up</Link>
                   </li>
                 </ul>
               </div>
 
               {/* 4th block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Company</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Nossa Localização</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
+                    <i className='bi bi-geo-alt-fill' />
+                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Brasil - São Paulo</Link>
                   </li>
                   <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Labore et dolore</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Labore et dolore</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
+                    <i className='bi bi-geo-alt-fill' />
+                    <Link href="/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Parque Tecnológico - São José dos Campos</Link>
                   </li>
                 </ul>
               </div>
@@ -103,7 +105,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="ml-4">
-                <Link href="/" className="flex justify-center items-center text-purple-600 bg-gray-800 hover:text-gray-100 hover:bg-purple-600 rounded-full transition duration-150 ease-in-out" aria-label="Instagram">
+                <Link href="https://www.instagram.com/compressorinteligente/" className="flex justify-center items-center text-purple-600 bg-gray-800 hover:text-gray-100 hover:bg-purple-600 rounded-full transition duration-150 ease-in-out" aria-label="Instagram">
                   <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="20.145" cy="11.892" r="1" />
                     <path d="M16 20c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z" />
