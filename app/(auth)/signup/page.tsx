@@ -1,10 +1,5 @@
 "use client"
 
-export const metadata = {
-    title: 'Cadastro - Compressor | Zeta',
-    description: 'Page description',
-  }
-
   import Link from 'next/link'
   import { AwsClient } from 'aws4fetch';
   import { useState } from 'react';
