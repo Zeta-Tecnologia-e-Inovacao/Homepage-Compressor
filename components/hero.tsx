@@ -1,5 +1,4 @@
-import VideoThumb from '../public/images/hero-image-01.jpg'
-import ModalVideo from './modal-video'
+import ModalVideo from './modal-image'
 
 export default function Hero() {
   return (
@@ -26,26 +25,18 @@ export default function Hero() {
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">Compressor Inteligente: O Futuro da Eficiência Industrial</h1>
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
-              
-              tecnologias avançadas desempenham um papel fundamental na modernização das operações industriais, permitindo que as empresas sejam mais competitivas e eficientes em um mercado cada vez mais exigente.</p>
+            A Zeta tem o prazer de apresentar o Compressor Inteligente para Clínicas Odontológicas, uma solução revolucionária que visa simplificar e aprimorar o funcionamento das clínicas odontológicas.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">Iniciar teste gratuito</a>
+                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="/signup" target='_blank'>Iniciar teste gratuito</a>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">Saber mais</a>
+                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="https://www.zetatecnologia.com.br" target='_blank'>Saber mais</a>
               </div>
             </div>
           </div>
 
-          <ModalVideo
-            thumb={VideoThumb}
-            thumbWidth={1024}
-            thumbHeight={576}
-            thumbAlt="Modal video thumbnail"
-            video="/videos/video.mp4"
-            videoWidth={1920}
-            videoHeight={1080} />
+          <ModalVideo />
 
         </div>
 

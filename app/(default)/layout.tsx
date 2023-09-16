@@ -4,16 +4,20 @@ import { useEffect } from 'react'
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+import React, { ReactNode } from "react"
 
 import PageIllustration from '../../components/page-illustration'
 import Footer from '../../components/ui/footer'
 
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {  
+interface iprops {
+  children: ReactNode;
+}
 
+
+export default function DefaultLayout({ children }: iprops){
   useEffect(() => {
     AOS.init({
       once: true,
@@ -26,13 +30,10 @@ export default function DefaultLayout({
   return (
     <>
       <main className="grow">
-
         <PageIllustration />
-
         {children}
-
       </main>
-
+    
       <Footer />
     </>
   )

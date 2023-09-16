@@ -1,11 +1,72 @@
+"use client"
+
+import Link from 'next/link'
+import { AwsClient } from 'aws4fetch';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
 export default function Newsletter() {
+
+  const [outputName, setOutputName] = useState('');
+  const [outputNumber, setOutputNumber] = useState('');
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    value = value.replace(/\D/g, "");
+    value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+    setOutputNumber(value);
+  }
+
+  
+  const accessKeyId = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY ?? '';
+  const secretAccessKey = process.env.NEXT_PUBLIC_AWS_SECRET_KEY ?? '';
+  const url = process.env.NEXT_PUBLIC_AWS_URL ?? '';
+  const region = process.env.NEXT_PUBLIC_AWS_REGION ?? '';
+  const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
+
+  // -----------------------
+  function FormRequisicao() {
+    async function fetchData() {
+      const options = {
+        method: 'POST',
+        Origin,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: outputName,
+          contact: outputNumber,
+        }),
+      };
+      const aws = new AwsClient({
+        accessKeyId,
+        secretAccessKey,
+        service: 'execute-api',
+        region,
+      });
+      await aws.fetch(url, options).then(response => {
+        response.json().then(data => {
+          const status = response.status;
+          console.log(status)
+          if (status == 201) {
+            toast.success('Formulário enviado com sucesso!');
+          } else if (status == 409) {
+            toast.error('Este telefone já foi cadastrado. Por favor, aguarde o contato de nosso consultor.');
+          } else {
+            toast.error('Houve um problema ao realizar o cadastro. Por favor, tente novamente mais tarde!');
+          }
+        });
+      });
+    }
+    fetchData();
+  }
     return (
       <section id="contact">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-  
           {/* CTA box */}
           <div className="relative bg-purple-600 py-10 px-8 md:py-16 md:px-12" data-aos="fade-up">
-  
+
             {/* Background illustration */}
             <div className="absolute right-0 top-0 -ml-40 pointer-events-none" aria-hidden="true">
               <svg width="238" height="110" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,35 +85,50 @@ export default function Newsletter() {
               {/* CTA content */}
               <div className="mb-6 lg:mr-16 lg:mb-0 text-center lg:text-left lg:w-1/2">
                 <h3 className="h3 text-white mb-2">Fique por dentro!</h3>
-                <p className="text-purple-200 text-lg">Cadastre-se para um consultor especializado entrar em contato com você!</p>
+                <p className="text-purple-200 text-lg">Cadastre-se para um consultor especializado entrar em contato com você ou fale conosco!</p>
+                <Link href="#contact"><p className="text-slate-950 text-lg">contato@zetatecnologia.com.br</p></Link>
+                <Link href="#contact"><p className="text-slate-950 text-lg">+55(12) 99606-2530</p></Link>
               </div>
   
               {/* CTA form */}
               <form className="w-full lg:w-1/2">
                 <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
                   <input 
-                    type="email" 
-                    className="w-full appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400" 
-                    placeholder="Seu e-mail" 
-                    aria-label="Seu e-mail" 
-                  />
-                  <input 
                     type="text" 
                     className="w-full appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400" 
-                    placeholder="Seu celular" 
-                    aria-label="Seu celular"
+                    placeholder="Seu nome" 
+                    aria-label="Seu nome"
+                    minLength={3}
+                    
+                    onChange={(e) => setOutputName(e.target.value)}
+                    required
                   />
-                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href="#0">Enviar</a>
+                  <input 
+                    type="tel" 
+                    pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}"
+                    className="w-full appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400" 
+                    placeholder="XX-XXXX-XXXX" 
+                    aria-label="Seu telefone"
+                    minLength={11}
+                    maxLength={18}
+                    value={outputNumber}
+                    onChange={(e) => handlePhoneChange(e)}
+                    required
+                  />
+                  <button 
+                    type='button' 
+                    onClick={FormRequisicao}
+                  > <a 
+                      className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" 
+                      href="#0">Enviar
+                    </a>
+                </button>
                 </div>
-                {/* Success message */}
-                {/* <p className="text-center lg:text-left lg:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> */}
               </form>
-  
             </div>
-  
           </div>
-  
         </div>
-      </section>
+        <ToastContainer />
+      </section>   
     )
   }

@@ -1,11 +1,84 @@
+"use client"
+
 export const metadata = {
     title: 'Cadastro - Compressor | Zeta',
     description: 'Page description',
   }
+
   import Link from 'next/link'
+  import { AwsClient } from 'aws4fetch';
+  import { useState } from 'react';
+  import { ToastContainer, toast } from 'react-toastify';
   import HeaderExp from '../../../components/ui/headerExp'
   
   export default function SignUp() {
+
+    const [outputName, setOutputName] = useState('');
+    const [outputEmail, setOutputEmail] = useState('');
+    const [outputCpf, setOutputCpf] = useState('');
+    const [outputNumber, setOutputNumber] = useState('');
+
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      let value = e.target.value;
+      value = value.replace(/\D/g, "");
+      value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+      value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+      setOutputNumber(value);
+    }
+
+
+    const handleCpfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      let value = e.target.value;
+      value = value.replace(/\D/g, "");
+      value = value.replace(/(\d{3})(\d)/, "$1.$2");
+      value = value.replace(/(\d{3})(\d)/, "$1.$2");
+      value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      setOutputCpf(value);
+    }
+
+    const accessKeyId = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY ?? '';
+    const secretAccessKey = process.env.NEXT_PUBLIC_AWS_SECRET_KEY ?? '';
+    const url = process.env.NEXT_PUBLIC_AWS_URL_CLIENTS ?? '';
+    const region = process.env.NEXT_PUBLIC_AWS_REGION ?? '';
+    const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
+  
+    function FormRequisicao() {
+      async function fetchData() {
+        const options = {
+          method: 'POST',
+          Origin,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: outputName,
+            email: outputEmail,
+            cpf: outputCpf,
+            contact: outputNumber,
+          }),
+        };
+        const aws = new AwsClient({
+          accessKeyId,
+          secretAccessKey,
+          service: 'execute-api',
+          region,
+        });
+          aws.fetch(url, options).then(response => {
+          response.json().then(data => {
+            const status = response.status;
+            console.log(status)
+            if (status == 201) {
+              toast.success('Cadastro realizado com sucesso!');
+            } else if (status == 409) {
+              toast.error('Este email já foi registrado. ');
+            } else {
+              toast.error('Houve um problema ao realizar o cadastro. Por favor, tente novamente mais tarde!');
+            }
+          });
+        });
+      }
+      fetchData();
+    }
     return (
       <header>
         <HeaderExp />
@@ -15,11 +88,11 @@ export const metadata = {
     
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1">Bem-vindo. Existimos para facilitar o crescimento do seu empreendimento.</h1>
+                <h1 className="h1" data-aos="fade-up" data-aos-delay="160">Bem-vindo. Existimos para facilitar o crescimento do seu empreendimento.</h1>
               </div>
     
               {/* Form */}
-              <div className="max-w-sm mx-auto">
+              <div className="max-w-sm mx-auto" data-aos="fade-up" data-aos-delay="200">
                 <form>
                   <div className="flex flex-wrap -mx-3">
                     <div className="w-full px-3">
@@ -42,19 +115,25 @@ export const metadata = {
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="full-name">Nome<span className="text-red-600">*</span></label>
-                      <input id="full-name" type="text" className="form-input w-full text-gray-300" placeholder="Primeiro nome e sobrenome" required />
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap -mx-3 mb-4">
-                    <div className="w-full px-3">
-                      <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Nome da empresa <span className="text-red-600">*</span></label>
-                      <input id="company-name" type="text" className="form-input w-full text-gray-300" placeholder="Sua empresa ou nome do app" required />
+                      <input id="full-name" onChange={(e) => setOutputName(e.target.value)} type="text" className="form-input w-full text-gray-300" placeholder="Primeiro nome" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-                      <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@gmail.com" required />
+                      <input id="email" type="email" onChange={(e) => setOutputEmail(e.target.value)}  className="form-input w-full text-gray-300" placeholder="you@gmail.com" required />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap -mx-3 mb-4">
+                    <div className="w-full px-3">
+                      <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">CPF<span className="text-red-600">*</span></label>
+                      <input id="company-name" type="text" onChange={(e) => handleCpfChange(e)} value={outputCpf} className="form-input w-full text-gray-300" placeholder="Seu CPF" required />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap -mx-3 mb-4">
+                    <div className="w-full px-3">
+                      <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Telefone<span className="text-red-600">*</span></label>
+                      <input id="company-name" onChange={(e) => handlePhoneChange(e)} type="text" value={outputNumber} className="form-input w-full text-gray-300" placeholder="Seu telefone para contato" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
@@ -74,7 +153,7 @@ export const metadata = {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign up</button>
+                      <button type='button' onClick={FormRequisicao} className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign up</button>
                     </div>
                   </div>
                 </form>
@@ -85,6 +164,7 @@ export const metadata = {
     
             </div>
           </div>
+          <ToastContainer />
         </section>
       </header>
     )

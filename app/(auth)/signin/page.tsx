@@ -1,12 +1,19 @@
+'use client'
+
 export const metadata = {
     title: 'Login - Zeta | Compressor',
     description: 'Page description',
   }
 
-  import HeaderExp from '../../../components/ui/headerExp'
-  import Link from 'next/link'
-  
+import { useState } from 'react'
+import HeaderExp from '../../../components/ui/headerExp'
+import Link from 'next/link'
+
   export default function SignIn() {
+
+      const [email, setEmail] = useState<string>('')
+      const [password, setPassword] = useState<string>('')
+    
     return (
       <header>
         <HeaderExp />
@@ -16,15 +23,17 @@ export const metadata = {
     
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1">Bem-vindo de volta. Existimos para facilitar o crescimento do seu empreendimento.</h1>
+                <h1 className="h1" data-aos="fade-up" data-aos-delay="160">Bem-vindo de volta. Existimos para facilitar o crescimento do seu empreendimento.</h1>
               </div>
     
               {/* Form */}
-              <div className="max-w-sm mx-auto">
+              <div className="max-w-sm mx-auto" data-aos="fade-up" data-aos-delay="200">
                 <form>
                   <div className="flex flex-wrap -mx-3">
                     <div className="w-full px-3">
-                      <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
+                      <button 
+                        className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center"
+                      >
                         <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                           <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
                         </svg>
@@ -39,17 +48,19 @@ export const metadata = {
                   <div className="text-gray-400">Or, sign in with your email</div>
                   <div className="border-t border-gray-700 border-dotted grow ml-3" aria-hidden="true"></div>
                 </div>
+                
+                {/* Formulario de Login */}
                 <form>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
-                      <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                      <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@gmail.com" required />
+                      <label className="block text-gray-300 text-sm font-medium mb-1">Email</label>
+                      <input type="text" name='email' onChange={(e) => setEmail(e.target.value)} className="form-input w-full text-gray-300" placeholder="Email" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
-                      <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">Senha</label>
-                      <input id="password" type="password" className="form-input w-full text-gray-300" placeholder="Senha (pelo menos 10 caracteres)" required />
+                      <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">password</label>
+                      <input type="password" name='password' onChange={(e) => setPassword(e.target.value)} className="form-input w-full text-gray-300" placeholder="Senha (pelo menos 10 caracteres)" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
@@ -65,7 +76,7 @@ export const metadata = {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign in</button>
+                      <button type='submit' className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign in</button>
                     </div>
                   </div>
                 </form>
