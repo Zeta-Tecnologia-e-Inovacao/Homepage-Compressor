@@ -1,10 +1,5 @@
 'use client'
 
-export const metadata = {
-    title: 'Login - Zeta | Compressor',
-    description: 'Page description',
-  }
-
 import { useState } from 'react'
 import HeaderExp from '../../../components/ui/headerExp'
 import Link from 'next/link'
