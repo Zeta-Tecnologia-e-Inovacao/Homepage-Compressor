@@ -13,14 +13,13 @@ export default function Banner() {
             <div className="text-slate-500 inline-flex">
               <a
                 className="font-medium hover:underline text-slate-50"
-                href="https://github.com/cruip/open-react-template"
-                target="_blank"
+                href="#contact"
                 rel="noreferrer"
               >
                 Entre em contato<span className="hidden sm:inline"> conosco</span>
               </a>{' '}
               <span className="italic px-1.5">ou</span>{' '}
-              <a className="font-medium hover:underline text-emerald-400" href="#newsletter" target="_blank" rel="noreferrer">
+              <a className="font-medium hover:underline text-emerald-400" href="#contact" rel="noreferrer">
                 deixe seus dados para falarmos com você.
               </a>
             </div>
