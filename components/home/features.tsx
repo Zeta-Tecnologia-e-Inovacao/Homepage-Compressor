@@ -8,7 +8,7 @@ export default function Features() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4">Sobre o Compressor Inteligente</h2>
+            <h2 className="h2 mb-4 text-gray-100">Sobre o Compressor Inteligente</h2>
             <p className="text-xl text-gray-400">A obtenção de um compressor inteligente na indústria oferece uma série de benefícios, desde a economia de energia e redução de custos até o aumento da produtividade e a sustentabilidade ambiental.</p>
           </div>
 
@@ -22,7 +22,7 @@ export default function Features() {
                 <path className="stroke-current text-purple-100" d="M30 39.313l-4.18 2.197L27 34.628l-5-4.874 6.91-1.004L32 22.49l3.09 6.26L42 29.754l-3 2.924" strokeLinecap="square" strokeWidth="2" fill="none" fillRule="evenodd" />
                 <path className="stroke-current text-purple-300" d="M43 42h-9M43 37h-9" strokeLinecap="square" strokeWidth="2" />
               </svg>
-              <h4 className="h4 mb-2">Eficiência Energética</h4>
+              <h4 className="h4 mb-2 text-gray-100">Eficiência Energética</h4>
               <p className="text-lg text-gray-400 text-center"><Balancer>Compressores inteligentes são projetados para otimizar o consumo de energia, reduzindo seus custos operacionais e minimizando o impacto ambiental.</Balancer></p>
             </div>
 
@@ -33,7 +33,7 @@ export default function Features() {
                 <path className="stroke-current text-purple-100" strokeWidth="2" strokeLinecap="square" d="M21 23h22v18H21z" fill="none" fillRule="evenodd" />
                 <path className="stroke-current text-purple-300" d="M26 28h12M26 32h12M26 36h5" strokeWidth="2" strokeLinecap="square" />
               </svg>
-              <h4 className="h4 mb-2">Controle Remoto</h4>
+              <h4 className="h4 mb-2 text-gray-100">Controle Remoto</h4>
               <p className="text-lg text-gray-400 text-center"><Balancer>Você pode controlar o compressor de qualquer lugar, usando seu smartphone ou computador, o que é conveniente para monitorar e ajustar as configurações quando necessário.</Balancer></p>
             </div>
 
@@ -47,7 +47,7 @@ export default function Features() {
                   <circle className="stroke-current text-purple-100" cx="11" cy="11" r="11" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Manutenção Preventiva</h4>
+              <h4 className="h4 mb-2 text-gray-100">Manutenção Preventiva</h4>
               <p className="text-lg text-gray-400 text-center"><Balancer>Esses compressores possuem sistemas de diagnóstico avançados que identificam problemas antes que eles se tornem graves, evitando paradas inesperadas e reduzindo custos de manutenção.</Balancer></p>
             </div>
 
@@ -60,7 +60,7 @@ export default function Features() {
                   <circle className="stroke-current text-purple-300" cx="13" cy="9" r="3" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Monitoramento em Tempo Real</h4>
+              <h4 className="h4 mb-2 text-gray-100">Monitoramento em Tempo Real</h4>
               <p className="text-lg text-gray-400 text-center"><Balancer>Compressores inteligentes oferecem acesso a dados em tempo real, permitindo que você acompanhe o desempenho e tome decisões informadas para melhorar a eficiência.</Balancer></p>
             </div>
 
@@ -73,7 +73,7 @@ export default function Features() {
                   <path className="stroke-current text-purple-300" d="M22 30h4v12h-4z" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Integração com Sistemas</h4>
+              <h4 className="h4 mb-2 text-gray-100">Integração com Sistemas</h4>
               <p className="text-lg text-gray-400 text-center"><Balancer>Eles podem ser facilmente integrados com sistemas de automação industrial, permitindo uma gestão mais eficiente de toda a sua operação.</Balancer></p>
             </div>
 
@@ -87,7 +87,7 @@ export default function Features() {
                   <path className="stroke-current text-purple-100" d="M8.86 1.18C3.8 1.988 0 5.6 0 10c0 5 4.9 9 11 9a10.55 10.55 0 003.1-.4L20 21l-.6-5.2a9.125 9.125 0 001.991-2.948" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Redução de Ruído</h4>
+              <h4 className="h4 mb-2 text-gray-100">Redução de Ruído</h4>
               <p className="text-lg text-gray-400 text-center"><Balancer>Muitos modelos de compressores inteligentes são projetados com isolamento acústico avançado, tornando-os mais silenciosos e adequados para ambientes de trabalho sensíveis ao ruído.</Balancer></p>
             </div>
 

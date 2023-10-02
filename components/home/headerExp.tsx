@@ -2,19 +2,20 @@
 
 import { useState, useEffect } from 'react'
 
+import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link'
 import Image from 'next/image'
-import MobileMenu from './mobile-menu'
+import MobileMenuExp from './mobile-menuExp'
 import Logo from '../../public/images/Zeta-Logo.png'
 
-export default function Header() {
+export default function HeaderExp() {
 
   const [top, setTop] = useState<boolean>(true)
 
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.pageYOffset > 10 ? setTop(false) : setTop(true)
-  }  
+  }
 
   useEffect(() => {
     scrollHandler()
@@ -39,23 +40,13 @@ export default function Header() {
             {/* Desktop sign in links */}
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
-                <Link href="#about"className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">
-                  Sobre nós
+                <Link href="/" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="#compressor" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">
-                  Compressor
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact"className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">
-                  Contato
-                </Link>
-              </li>
-              <li>
-                <Link href="/signin"className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">
-                  Sign in
+                <Link href="/signin" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  <button onClick={() => signIn()}>Sign in</button>
                 </Link>
               </li>
               <li>
@@ -66,7 +57,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          <MobileMenu />
+          <MobileMenuExp />
 
         </div>
       </div>

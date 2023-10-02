@@ -23,9 +23,9 @@ export default function Hero() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">Compressor Inteligente: O Futuro da Eficiência Industrial</h1>
+            <h1 className="h1 mb-4 text-gray-100" data-aos="fade-up">Compressor Inteligente: O Futuro da Eficiência Industrial</h1>
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
-            A Zeta tem o prazer de apresentar o Compressor Inteligente para Clínicas Odontológicas, uma solução revolucionária que visa simplificar e aprimorar o funcionamento das clínicas odontológicas.</p>
+              A Zeta tem o prazer de apresentar o Compressor Inteligente para Clínicas Odontológicas, uma solução revolucionária que visa simplificar e aprimorar o funcionamento das clínicas odontológicas.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="/signup" target='_blank'>Iniciar teste gratuito</a>
