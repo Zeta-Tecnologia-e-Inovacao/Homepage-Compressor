@@ -1,69 +1,57 @@
-import { ApexOptions } from 'apexcharts';
+import React, { useState } from 'react';
+import HighchartsReact from 'highcharts-react-official';
+import Highcharts from "highcharts/highstock";
 
-import dynamic from 'next/dynamic';
-const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
-
-
-export default function AreaChart() {
-    const options: ApexOptions = {
-        series: [
-          {
-            name: "Motor Elétrico",
-            data: [18, 42, 63, 90, 125]
-          },
-        ],
-        chart: {
-        type: 'area',
-        height: 350,
-        zoom: {
-          enabled: false
-        }
-      },
-      colors: ['#0088ff'],
-      dataLabels: {
-        enabled: true
-      },
-      stroke: {
-        curve: 'straight'
-      },
-      
+const AreaChart = () => {
+  const [hoverData, setHoverData] = useState(null);
+  const [chartOptions, setChartOptions] = useState({
+    chart: {
+      type: 'area',
+    },
+    xAxis: {
+      categories: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
       title: {
-        text: 'Tempo de Operação Acumulado',
-        align: 'center'
-      },
+        text: 'Dias da semana'
+      }
+    },
+    yAxis: {
+      min: 0,
+      max: 125,
+      title: {
+        text: 'Tempo'
+      }
+    },
+    title: {
+      text: 'Tempo de operação acumulado'
+    },
+    series: [
+      { 
+        name: "Motor Elétrico",
+        data: [18, 42, 63, 90, 125] 
+      }
+    ],
+    plotOptions: {
+      series: {
+        point: {
+          events: {
+            mouseOver(e: any){
+              setHoverData(e.target.category)
+            }
+          }
+        }
+      }
+    }
+  });
 
-      markers: {
-        size: 10
-      },
-      xaxis: {
-        categories: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-        title: {
-            text: 'Dias da semana',
-        },
-      },
-      yaxis: {
-        min: 0,
-        max: 125,
-        title: {
-            text: 'Tempo'
-        },
-      },
-    };
-
-    return (
-      <> 
-          <div className='bg-slate-200 max-w-full mx-auto md:max-w-none'  data-aos="fade-up" data-aos-delay="200">
-              <ReactApexChart
-                  options={options}
-                  series={options.series}
-                  type="area"
-                  height={350}
-              />
-          </div>
-      </>
+  return (
+      <div className='max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6'>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={chartOptions}
+        />
+        <h3 className='text-center'>Dia da semana: {hoverData}</h3>
+      </div>
     )
-  
 }
 
-
-
+export default AreaChart;

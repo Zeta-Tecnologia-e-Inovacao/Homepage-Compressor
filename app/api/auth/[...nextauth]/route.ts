@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { URL_API } from '../../../../utils/constants'
 
 const authOptions: NextAuthOptions = {
     providers: [
@@ -18,7 +19,7 @@ const authOptions: NextAuthOptions = {
                     password: credentials.password,
                 };
 
-                const res = await fetch('https://7glsnn66sa.execute-api.sa-east-1.amazonaws.com/prod/clients/auth/login', {
+                const res = await fetch(`${URL_API}/clients/auth/login`, {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
@@ -36,7 +37,6 @@ const authOptions: NextAuthOptions = {
                         image = '/images/noimages.png'
                     }
 
-                    console.log(image);
                     return {
                         AccessToken,
                         IdToken,
@@ -57,7 +57,6 @@ const authOptions: NextAuthOptions = {
     callbacks: {
         async jwt({ token, user }: any) {
             if (user) {
-
                 const isSignIn = user !== undefined;
                 const DataAtualSeconds = Math.floor(Date.now() / 1000);
                 const ExpirationTokenSeconds = Math.floor(3 * 24 * 60 * 60);
@@ -116,7 +115,7 @@ const authOptions: NextAuthOptions = {
     },
 
     secret: process.env.NEXTAUTH_SECRET,
-    debug: process.env.NODE_ENV === "development"
+    // debug: process.env.NODE_ENV === "development"
 };
 
 const handler = NextAuth(authOptions);
