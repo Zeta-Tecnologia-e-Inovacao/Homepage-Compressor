@@ -3,6 +3,9 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { URL_API } from '../../../../utils/constants'
 
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
