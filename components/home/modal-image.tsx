@@ -1,4 +1,4 @@
-import HeroImage from '../public/images/hero-image-02.jpg'
+import HeroImage from '../../public/images/hero-image-02.jpg'
 import Image from 'next/image'
 
 export default function ModalVideo(){

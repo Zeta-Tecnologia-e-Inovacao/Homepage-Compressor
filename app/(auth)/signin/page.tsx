@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import HeaderExp from '../../../components/ui/headerExp'
 import Link from 'next/link'
 
   export default function SignIn() {
@@ -11,7 +10,6 @@ import Link from 'next/link'
     
     return (
       <header>
-        <HeaderExp />
         <section className="relative">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="pt-32 pb-12 md:pt-40 md:pb-20">
@@ -65,7 +63,7 @@ import Link from 'next/link'
                           <input type="checkbox" className="form-checkbox" />
                           <span className="text-gray-400 ml-2">Mantenha-me conectado</span>
                         </label>
-                        <Link href="/reset-password" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Esqueceu sua senha?</Link>
+                       
                       </div>
                     </div>
                   </div>

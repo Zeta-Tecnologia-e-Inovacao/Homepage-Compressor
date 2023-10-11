@@ -20,3 +20,134 @@
 [x-cloak=""] {
     display: none;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  /* input[type="file"] {
+    display: none;
+  } */
+
+  .pomodoro {
+    background: #000;
+    margin: 50px 20px;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  }
+  
+  .pomodoro h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .pomodoro .timer {
+    font-size: 6rem;
+    text-align: center;
+  }
+  
+  .pomodoro .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .pomodoro button {
+    background: #1b75a9;
+    border: none;
+    cursor: pointer;
+    padding: 10px 25px;
+    color: #000;
+    transition: background-color 300ms ease-in-out;
+    margin: 20px auto;
+  }
+  
+
+  .pomodoro .details {
+    margin: 20px 0;
+  }
+
+  .loader {
+    border-top-color: #3498db;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+  }
+  
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* inputs */
+  .personal-image {
+    text-align: center;
+  }
+  .personal-image input[type="file"] {
+    display: none;
+  }
+  .personal-figure {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+  .personal-avatar {
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out .3s;
+  }
+  .personal-avatar:hover {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  }
+  .personal-figcaption {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    width: inherit;
+    height: inherit;
+    border-radius: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all ease-in-out .3s;
+  }
+  .personal-figcaption:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, .5);
+  }
+  .personal-figcaption > .image {
+    margin-top: 29.5px;
+    margin-left: 30px;
+    width: 60px;
+    height: 50px;
+  }
+

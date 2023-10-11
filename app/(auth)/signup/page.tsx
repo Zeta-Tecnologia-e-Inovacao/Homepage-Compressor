@@ -4,7 +4,6 @@
   import { AwsClient } from 'aws4fetch';
   import { useState } from 'react';
   import { ToastContainer, toast } from 'react-toastify';
-  import HeaderExp from '../../../components/ui/headerExp'
   
   export default function SignUp() {
 
@@ -76,7 +75,7 @@
     }
     return (
       <header>
-        <HeaderExp />
+       
         <section className="relative">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="pt-32 pb-12 md:pt-40 md:pb-20">
