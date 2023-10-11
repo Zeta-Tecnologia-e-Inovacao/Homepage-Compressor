@@ -6,6 +6,8 @@ const nextConfig = {
     typedRoutes: true,
   },
 
+  export: "output",
+
   images: {
     unoptimized: true
   },
