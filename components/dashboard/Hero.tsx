@@ -1,12 +1,7 @@
-import Card from "./CardDashboard"
-import LineChart from "./LineChart";
-import AreaChart from "./AreaChart";
-
 
 export default function HeroDashboard() {
 
     return (
-
         <>
             <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
                 <div className="mr-6">

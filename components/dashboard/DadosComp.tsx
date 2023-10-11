@@ -2,7 +2,6 @@ import TablePage from '../materialUi/Table';
 
 export default function DadosCompressor() {
 
-    
   return (
     <>
         <section className="grid gap-20">

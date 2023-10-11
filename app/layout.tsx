@@ -27,7 +27,6 @@ const architects_daughter = Architects_Daughter({
   display: 'swap'
 })
 
-
 export default function RootLayout({
   children,
   session
@@ -46,6 +45,7 @@ export default function RootLayout({
   })
 
   return (
+
     <html lang="en">
       <SessionProvider session={session}>
         <body className={`${inter.variable} ${architects_daughter.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}>
@@ -59,6 +59,7 @@ export default function RootLayout({
         </body>
       </SessionProvider>
     </html>
+    
   )
 }
  

@@ -11,7 +11,6 @@ import { ToastContainer, toast } from 'react-toastify';
 const DeleteDialog = () => {
     const { data: session } = useSession();
     const router = useRouter();
-
     const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN ?? '';
     const region = process.env.NEXT_PUBLIC_AWS_REGION ?? '';
 
@@ -29,7 +28,6 @@ const DeleteDialog = () => {
             signOut();
         }
     }
-
     return(
         <>
             <AlertDialog.Root>
