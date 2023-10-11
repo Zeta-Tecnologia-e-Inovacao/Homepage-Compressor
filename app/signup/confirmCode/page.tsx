@@ -1,23 +1,17 @@
 "use client"
 
-export const metadata = {
-  title: 'Cadastro - Compressor | Zeta',
-  description: 'Page description',
-}
 import { URL_API } from '../../../utils/constants'
-import Link from 'next/link'
 import HeaderExp from '../../../components/home/headerExp'
 
-import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function ConfirmCode() {
 
-  const { data: session } = useSession();
   const router = useRouter();
 
+  const [email, setEmail] = useState('')
   const [ConfirmCode, setConfirmCode] = useState('');
 
   const registerUser = async (e: any) => {
@@ -26,7 +20,7 @@ export default function ConfirmCode() {
     const res = await fetch(`${URL_API}/clients/auth/confirmation-email`, {
       method: 'POST',
       body: JSON.stringify({
-        email: session?.user?.email,
+        email: email,
         confirmationCode: ConfirmCode,
       }),
     });
@@ -52,6 +46,10 @@ export default function ConfirmCode() {
             <div className="max-w-sm mx-auto">
               <form onSubmit={registerUser}>
                 <div className="flex flex-wrap -mx-3 mb-4">
+                  <div className="w-full px-3">
+                    <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Email<span className="text-red-600">*</span></label>
+                    <input id="email" onChange={(e) => setEmail(e.target.value)} type="text" className="form-input w-full text-gray-300" placeholder="Seu telefone" required />
+                  </div>
                   <div className="w-full px-3">
                     <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Código de Confirmação<span className="text-red-600">*</span></label>
                     <input id="confirmation-code" onChange={(e) => setConfirmCode(e.target.value)} type="text" className="form-input w-full text-gray-300" placeholder="Seu telefone" required />
