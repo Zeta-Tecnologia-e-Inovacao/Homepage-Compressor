@@ -5,7 +5,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
-  output: 'standalone',
+
   output: 'export',
   images: {
     unoptimized: true
