@@ -48,7 +48,6 @@ export default function Newsletter() {
       await aws.fetch(url, options).then(response => {
         response.json().then(data => {
           const status = response.status;
-          console.log(status)
           if (status == 201) {
             toast.success('Formulário enviado com sucesso!');
           } else if (status == 409) {

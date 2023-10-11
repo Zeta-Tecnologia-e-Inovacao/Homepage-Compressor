@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
@@ -17,29 +19,22 @@ const DialogDemo = () => {
     const { data: session } = useSession();
     const router = useRouter();
 
-    const updateUser = async (e: any) => {
-        e.preventDefault();
-
-        console.log(Email)
-        console.log(Cpf)
-        console.log(Contact)
-
-        const res = await fetch(`${URL_API}/clients/d1552c06-c90e-467e-a226-10ff6f6197e8`, {
-          method: 'PUT',
-          body: JSON.stringify({
-            name: Name,
-            email: Email,
-            cpf: Cpf,
-            contact: "+55" + Contact,
-          }),
-        });
-
-        console.log(res)
+    // const updateUser = async (e: any) => {
+    //     e.preventDefault();
+    //     const res = await fetch(`${URL_API}/clients/d1552c06-c90e-467e-a226-10ff6f6197e8`, {
+    //       method: 'PUT',
+    //       body: JSON.stringify({
+    //         name: Name,
+    //         email: Email,
+    //         cpf: Cpf,
+    //         contact: "+55" + Contact,
+    //       }),
+    //     });
   
-        if(res.ok){
-          router.push("/dashboard");
-        }
-      }
+    //     if(res.ok){
+    //       router.push("/dashboard");
+    //     }
+    //   }
 
     return ( 
         <Dialog.Root>
@@ -116,7 +111,6 @@ const DialogDemo = () => {
                 <div className="mt-[25px] flex justify-end">
                     <Dialog.Close asChild>
                         <button 
-                            onClick={updateUser}
                             type='submit' 
                             className="bg-green-400 text-green-600 hover:bg-green-500 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
                         Save changes

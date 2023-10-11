@@ -6,20 +6,27 @@ import Header from "../../../components/dashboard/header"
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import DialogDemo from "../../../components/radix/Dialog";
-import Loading from "../../../components/loading";
-import { useRouter } from "next/navigation";
+import DeleteDialog from '../../../components/radix/deleteDialog'
 
-export const metadata = {
-    title: 'Profile - Compressor - Zeta',
-    description: 'Page description',
-}
+import Loading from "../../../components/loading";
+
+import { useEffect } from 'react'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import NProgress from 'nprogress'
 
 export default function Profile() {
 
-
-
     const { data: session, status } = useSession();
     const router = useRouter();
+
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
+    useEffect(() => {
+        NProgress.done();
+        return () => {
+          NProgress.start();
+        };
+      }, [pathname, searchParams]);
 
     // const [imagem, setImagem] = useState<undefined>();
 
@@ -85,9 +92,15 @@ export default function Profile() {
                             </div>
                         </div>
                         <div className="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
+
                             <div className="flex items-center space-x-4 mt-2">
                                 <DialogDemo />
                             </div>
+
+                            <div className="flex items-center space-x-4 mt-2">
+                                <DeleteDialog />
+                            </div>
+                            
                         </div>
                     </div>
 
