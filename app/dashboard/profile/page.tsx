@@ -9,14 +9,7 @@ import DialogDemo from "../../../components/radix/Dialog";
 import Loading from "../../../components/loading";
 import { useRouter } from "next/navigation";
 
-export const metadata = {
-    title: 'Profile - Compressor - Zeta',
-    description: 'Page description',
-}
-
 export default function Profile() {
-
-
 
     const { data: session, status } = useSession();
     const router = useRouter();
@@ -56,7 +49,6 @@ export default function Profile() {
         return (
             <>
                 <Header />
-
                 <div className="h-full p-10">
                     <div className="bg-white h-[400px] rounded-lg shadow-xl pb-8 mt-100">
                         <div className="w-full h-[200px]">
