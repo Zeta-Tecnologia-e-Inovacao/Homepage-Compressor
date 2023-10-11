@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect }  from "react"
-
 import './css/style.css'
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -9,7 +8,6 @@ import '@radix-ui/themes/styles.css';
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
 import { Theme } from '@radix-ui/themes';
 import { SessionProvider } from "next-auth/react"
 import { Inter, Architects_Daughter } from 'next/font/google'
