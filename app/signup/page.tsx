@@ -1,22 +1,38 @@
 "use client"
 
-export const metadata = {
-  title: 'Cadastro - Compressor | Zeta',
-  description: 'Page description',
-}
-
-import Link from 'next/link'
-import HeaderExp from '../../components/home/headerExp'
-import { URL_API } from '../../utils/constants'
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
+import Link from 'next/link'
+
+import { useEffect } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
+import NProgress from 'nprogress'
+
+import { useSession } from 'next-auth/react';
+import HeaderExp from '../../components/home/headerExp'
+import { URL_API } from '../../utils/constants'
+import Loading from "../../components/loading";
 
 export default function SignUp() {
+
+  const { status } = useSession()
   const router = useRouter();
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    NProgress.done();
+    return () => {
+      NProgress.start();
+    };
+  }, [pathname, searchParams]);
 
   // variáveis utilizadas
+
+  const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
+  const region = process.env.NEXT_PUBLIC_AWS_REGION ?? '';
 
   const [Name, setName] = useState('');
   const [Email, setEmail] = useState('');
@@ -29,6 +45,12 @@ export default function SignUp() {
 
     const res = await fetch(`${URL_API}/clients`, {
       method: 'POST',
+      headers: {
+        'Content-type': 'application-json',
+        "region": region ?? '',
+        "origin": Origin ?? ''
+      },
+      
       body: JSON.stringify({
         name: Name,
         email: Email,
@@ -42,6 +64,11 @@ export default function SignUp() {
       router.push("/signup/confirmCode");
     }
   }
+
+  if(status === 'loading'){
+    return <Loading />
+  }
+  
   return (
 
     <header>
