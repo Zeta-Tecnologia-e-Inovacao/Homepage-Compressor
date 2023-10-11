@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect }  from "react"
-
 import './css/style.css'
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -13,6 +12,7 @@ import 'aos/dist/aos.css'
 import { Theme } from '@radix-ui/themes';
 import { SessionProvider } from "next-auth/react"
 import { Inter, Architects_Daughter } from 'next/font/google'
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -26,7 +26,6 @@ const architects_daughter = Architects_Daughter({
   weight: '400',
   display: 'swap'
 })
-
 
 export default function RootLayout({
   children,
