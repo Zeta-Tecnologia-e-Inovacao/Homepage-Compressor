@@ -16,7 +16,6 @@ export default function CardDashboard () {
     const region = process.env.NEXT_PUBLIC_AWS_REGION ?? '';
     const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
   
-  
     // async function buscarDadosCompressor(){
     //   const resposta = await fetch(`${URL_API}/compressors/client/${session?.user.id}`, {
     //     method: 'GET',

@@ -66,13 +66,11 @@ export default function MobileMenu() {
               Dashboard
             </Link>
           </li>
-          
           <li>
             <Link href="#controle"className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center">
               Controles
             </Link>
           </li>
-
           <li>
             <Link href="#manutencao"className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center">
               Manutenção
