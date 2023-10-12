@@ -1,10 +1,8 @@
+
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { URL_API } from '../../../../utils/constants'
-
-export const dynamic = 'force-static'
-export const dynamicParams = false
 
 const authOptions: NextAuthOptions = {
     providers: [
@@ -12,8 +10,8 @@ const authOptions: NextAuthOptions = {
             name: 'credentials',
             
             credentials: {
-                email: { type: "text" },
-                password: { type: "password" }
+                email: {},
+                password: {}
             },
 
             async authorize ( credentials: any ) {
@@ -21,6 +19,8 @@ const authOptions: NextAuthOptions = {
                     email: credentials.email,
                     password: credentials.password,
                 };
+
+                console.log('entrei aqui')
 
                 const res = await fetch(`${URL_API}/clients/auth/login`, {
                     method: 'POST',
@@ -31,14 +31,10 @@ const authOptions: NextAuthOptions = {
                 });
 
                 const user = await res.json();
-
+                console.log('entrei aqui')
                 if (user !== null && res.status === 200) {
-                    let { id, name, email, cpf, contact, image } = user.data;
+                    let { id, name, email, cpf, contact } = user.data;
                     let { AccessToken, RefreshToken, IdToken } = user;
-
-                    if (image === null){
-                        image = '/images/noimages.png'
-                    }
 
                     return {
                         AccessToken,
@@ -49,7 +45,6 @@ const authOptions: NextAuthOptions = {
                         email,
                         cpf,
                         contact,
-                        image
                     };
                 } else {
                     return null;
@@ -76,7 +71,6 @@ const authOptions: NextAuthOptions = {
                     token.email = user.email;
                     token.cpf = user.cpf;
                     token.contact = user.contact;
-                    token.image = user.image;
                     token.expiration = Math.floor(DataAtualSeconds + ExpirationTokenSeconds);
                 }else {
                     if (token.expiration === null) return await Promise.resolve({});
@@ -90,7 +84,6 @@ const authOptions: NextAuthOptions = {
             if (token === null){
                 return null;
             }
-
             session.AccessToken = token.AccessToken;
             session.IdToken = token.IdToken;
             session.RefreshToken = token.RefreshToken;
@@ -98,11 +91,9 @@ const authOptions: NextAuthOptions = {
                 id: token.id,
                 name: token.name,
                 email: token.email,
-                image: token.image,
                 cpf: token.cpf,
                 contact: token.contact
             };
-            
             return {...session}
         },
     },

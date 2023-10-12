@@ -48,9 +48,6 @@ export default function Dashboard() {
 
   // fetchData();
 
-  // if(status === 'unauthenticated') {
-  //   router.push('/signin')
-  // }
 
   if (status === 'unauthenticated'){
     router.push('/signin', { scroll: false })
