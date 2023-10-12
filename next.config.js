@@ -9,6 +9,7 @@ const nextConfig = {
   // exclude: [
   //   'api',
   // ],
+  output: "export",
   distDir: 'out',
   reactStrictMode: true,
   images: {
