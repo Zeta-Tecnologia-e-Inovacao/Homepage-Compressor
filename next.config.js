@@ -5,8 +5,11 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
-  output: 'standalone',
-  output: 'export',
+  // exclude: [
+  //   'api',
+  // ],
+  distDir: 'out',
+  reactStrictMode: true,
   images: {
     unoptimized: true
   },

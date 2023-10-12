@@ -13,7 +13,6 @@ import { Theme } from '@radix-ui/themes';
 import { SessionProvider } from "next-auth/react"
 import { Inter, Architects_Daughter } from 'next/font/google'
 
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',

@@ -1,11 +1,16 @@
+'use client'
+
+import { useSession } from 'next-auth/react';
 
 export default function HeroDashboard() {
+
+    const { data: session } = useSession()
 
     return (
         <>
             <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
                 <div className="mr-6">
-                    <h1 className="text-4xl font-semibold mb-2">Bem vindo, Dr(a) ao Dashboard</h1>
+                    <h1 className="text-4xl font-semibold mb-2">Bem vindo, Dr(a) {session?.user.name} <br /> ao Dashboard</h1>
                     <h2 className="text-gray-600 ml-0.5">Controle do seu compressor</h2>
                 </div>
                 <div className="flex flex-wrap items-start justify-end -mb-3">

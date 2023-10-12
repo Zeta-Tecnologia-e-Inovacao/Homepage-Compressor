@@ -1,4 +1,3 @@
-import Card from "./CardDashboard"
 import LineChart from "./LineChart";
 import AreaChart from "./AreaChart";
 
