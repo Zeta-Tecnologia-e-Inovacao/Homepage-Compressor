@@ -8,7 +8,6 @@ import '@radix-ui/themes/styles.css';
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
 import { Theme } from '@radix-ui/themes';
 import { SessionProvider } from "next-auth/react"
 import { Inter, Architects_Daughter } from 'next/font/google'
