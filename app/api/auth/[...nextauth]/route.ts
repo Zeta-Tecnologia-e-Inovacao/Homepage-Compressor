@@ -1,4 +1,3 @@
-
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -20,8 +19,6 @@ const authOptions: NextAuthOptions = {
                     password: credentials.password,
                 };
 
-                console.log('entrei aqui')
-
                 const res = await fetch(`${URL_API}/clients/auth/login`, {
                     method: 'POST',
                     body: JSON.stringify(payload),
@@ -31,7 +28,6 @@ const authOptions: NextAuthOptions = {
                 });
 
                 const user = await res.json();
-                console.log('entrei aqui')
                 if (user !== null && res.status === 200) {
                     let { id, name, email, cpf, contact } = user.data;
                     let { AccessToken, RefreshToken, IdToken } = user;
