@@ -51,6 +51,7 @@
     "highcharts-react-official": "^3.2.1",
     "next": "^13.5.4",
     "next-auth": "^4.23.2",
+    "next-remove-imports": "^1.0.12",
     "node": "^20.6.0",
     "node-fetch": "^3.3.2",
     "nprogress": "^0.2.0",
