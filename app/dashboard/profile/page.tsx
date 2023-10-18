@@ -66,14 +66,14 @@ export default function Profile() {
                 <div className="h-full p-10">
                     <div className="bg-white h-[400px] rounded-lg shadow-xl pb-8 mt-100">
                         <div className="w-full h-[200px]">
-                            <Image alt='' width={1000} height={100} src="https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="w-full h-full rounded-tl-lg rounded-tr-lg" />
+                            <Image alt='' width={1000} height={100} src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fpt%2Fcategory%2Fbackgrounds-textures&psig=AOvVaw01fxcbZZXwIbLoEc3emTW_&ust=1697657321143000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMCwnL_o_YEDFQAAAAAdAAAAABAE" className="w-full h-full rounded-tl-lg rounded-tr-lg" />
                         </div>
                         <div className="flex flex-col items-center -mt-20">
                             <div className="personal-image">
                                 <label className="label">
                                     <input type="file" />
                                     <figure className="personal-figure">
-                                        <Image src="https://avatars1.githubusercontent.com/u/11435231?s=460&v=4" className="personal-avatar" alt="avatar" width={0} height={0} />
+                                        <Image src="/images/noimages.png" className="personal-avatar" alt="avatar" width={0} height={0} />
                                         <figcaption className="personal-figcaption">
                                             <Image src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png" className='image' alt="avatar" width={0} height={0} />
                                         </figcaption>

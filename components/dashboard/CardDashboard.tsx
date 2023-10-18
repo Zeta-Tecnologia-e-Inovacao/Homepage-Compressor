@@ -7,52 +7,50 @@ import { useState } from 'react';
 
 export default function CardDashboard () {
     const { data: session } = useSession();
-    const [idCompressor, setId] = useState()
-    const [data, setData] = useState()
 
-    const accessKeyId = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY ?? '';
-    const secretAccessKey = process.env.NEXT_PUBLIC_AWS_SECRET_KEY ?? '';
-    const url = process.env.NEXT_PUBLIC_AWS_URL ?? '';
-    const region = process.env.NEXT_PUBLIC_AWS_REGION ?? '';
-    const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
-  
-    // async function buscarDadosCompressor(){
-    //   const resposta = await fetch(`${URL_API}/compressors/client/${session?.user.id}`, {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       "origin": Origin ?? ''
-    //     }
-    //   });
-  
-    //   if(resposta.ok){
-    //     const dadosCompressor = await resposta.json();
-    //     const { id }: any = dadosCompressor.data[0];
-    //     setId(id)
-    //   } else {
-    //     console.error('Erro ao buscar dados do compressor:', resposta.status);
-    //   }
-  
-      // const res = await fetch(`${URL_API}/compressors/${idCompressor}/logs`, {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-  
-      //   }
-      // });
-  
-      // if(res.ok){
-      //   const dados = await res.json();
-      //   console.log(dados[0])
-  
-      // } else {
-      //   console.error('Erro ao buscar dados do compressor:', res.status);
-      // }
-  
-      // --------------------------------------------------------------------
-    
-    // }
-    // buscarDadosCompressor();
+    const [tempoLigado, setTempLigado] = useState()
+    const [tempoDesligado, setTempDesligado] = useState()
+    const [switching, setSwitching] = useState()
+
+    async function buscarDadosCompressor() {
+        const url = `${URL_API}/compressors/client/${session?.user.id}`
+
+        fetch(url)
+        .then(response => response.json())
+        .then(resp => {
+            const dadosCompressor = resp;
+            const { id }: any = dadosCompressor.data[0];
+            buscarLogs(id)
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+        });
+    }
+    // =========================================================================
+
+    async function buscarLogs(idCompressor: any){
+        const url = `${URL_API}/compressors/${idCompressor}/logs`
+
+        fetch(url)
+        .then(response => response.json())
+        .then(resp => {
+            console.log('Dados recebidos:', resp);
+
+            const eletricalSwitching  = resp.hour_electrical_switching_count
+            setSwitching(eletricalSwitching)
+
+            const workedHours = resp.total_runtime
+            setTempLigado(workedHours)
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+        });
+    };
+            
+        
+    //   --------------------------------------------------------------------
+        
+    buscarDadosCompressor();
 
     return (
         <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -63,7 +61,7 @@ export default function CardDashboard () {
                     </svg>
                 </div>
                 <div>
-                    <span className="block text-2xl font-bold">70 horas</span>
+                    <span className="block text-2xl font-bold">{tempoLigado} horas</span>
                     <span className="block text-gray-500">Tempo energizado e em uso</span>
                 </div>
             </div>
@@ -85,8 +83,8 @@ export default function CardDashboard () {
                     </svg>
                 </div>
                 <div>
-                    <span className="inline-block text-2xl font-bold">Chavemento elétrico</span>
-                    <span className="block text-gray-500">7 chaveamentos</span>
+                    <span className="inline-block text-2xl font-bold">{switching} chaveamentos</span>
+                    <span className="block text-gray-500">Chavemento elétrico</span>
                 </div>
             </div>
             <div className="flex items-center p-8 bg-white shadow rounded-lg">

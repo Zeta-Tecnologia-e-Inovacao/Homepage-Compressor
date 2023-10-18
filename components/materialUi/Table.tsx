@@ -39,23 +39,14 @@ export default function TableDashboard() {
   const [nameCompressor, setNameCompressor] = useState('')
   const [Serial, setSerial] = useState('')
   const { data: session } = useSession();
-
-  const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
   
   async function buscarDadosCompressor(){
     const resposta = await fetch(`${URL_API}/compressors/client/${session?.user.id}`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        "origin": Origin ?? ''
-      }
     });
 
     if(resposta.ok){
-
       const dadosCompressor = await resposta.json();
-      console.log(dadosCompressor)
-
       const { name, serial_number }: any = dadosCompressor.data[0];
       setNameCompressor(name)
       setSerial(serial_number)
