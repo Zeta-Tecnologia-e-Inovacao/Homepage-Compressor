@@ -18,7 +18,6 @@ export default function Newsletter() {
     setOutputNumber(value);
   }
 
-  
   const accessKeyId = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY ?? '';
   const secretAccessKey = process.env.NEXT_PUBLIC_AWS_SECRET_KEY ?? '';
   const url = process.env.NEXT_PUBLIC_AWS_URL ?? '';

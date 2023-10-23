@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from "highcharts/highstock";
 
+
 const LineChart = () => {
   const [hoverData, setHoverData] = useState(null);
   const [chartOptions, setChartOptions] = useState({
@@ -45,11 +46,9 @@ const LineChart = () => {
         data: [10, 10, 10, 10, 10]
       }
     ],
-
     markers: {
       size: 1
     },
-    
     xAxis: {
       categories: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
       title: {
@@ -95,5 +94,4 @@ const LineChart = () => {
       </div>
     )
 }
-
 export default LineChart;

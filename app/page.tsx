@@ -1,6 +1,5 @@
 'use client' 
 
-
 import Banner from '../components/home/banner'
 import PageIllustration from '../components/page-illustration'
 import Hero from '../components/home/hero'
@@ -15,7 +14,6 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import NProgress from 'nprogress'
 
 export default function Home() {
-  
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -27,6 +25,7 @@ export default function Home() {
   }, [pathname, searchParams]);
 
   return (
+    
     <>
       <PageIllustration />
       <Header />

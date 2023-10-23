@@ -2,7 +2,6 @@ import TablePage from '../materialUi/Table';
 
 export default function DadosCompressor() {
 
-    
   return (
     <>
         <section className="grid gap-20">
@@ -20,7 +19,6 @@ export default function DadosCompressor() {
                   <div className="px-6 py-5 font-semibold border-b border-gray-100">Dados do compressor</div>
                   <div className="p-2 max-w-full mx-auto md:max-w-none h-auto">
                     <TablePage />
-                      {/* <LineChart /> */}
                   </div>
                 </div>
               </div>

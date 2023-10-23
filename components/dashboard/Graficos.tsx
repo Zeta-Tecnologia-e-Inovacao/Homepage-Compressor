@@ -1,12 +1,9 @@
-import Card from "./CardDashboard"
 import LineChart from "./LineChart";
 import AreaChart from "./AreaChart";
-
 
 export default function GraficosDashboard() {
 
   return (
-
     <>
       <section className="grid gap-20">
         <div className='md:grid md:grid-cols-12 md:gap-6 items-center'>

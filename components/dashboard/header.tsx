@@ -7,7 +7,7 @@ import DialogAlert from '../radix/alertDialog'
 export default function Header() {
 
   return (
-    <header className='bg-black backdrop-blur-sm shadow-lg w-full z-30 md:bg-opacity-80 transition duration-300 ease-in-out'>
+    <header className='bg-black backdrop-blur-sm shadow-lg w-full z-30 transition duration-300 ease-in-out'>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Site branding */}
@@ -47,9 +47,7 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-
           <MobileMenu />
-
         </div>
       </div>
     </header>

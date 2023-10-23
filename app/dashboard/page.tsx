@@ -11,18 +11,15 @@ import Card from '../../components/dashboard/CardDashboard'
 import DadosCompressor from "../../components/dashboard/DadosComp";
 import Grafico from "../../components/dashboard/Graficos";
 
-
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import NProgress from 'nprogress'
 
 export const dynamic = 'force-static'
-
 export default function Dashboard() {
 
   const { status } = useSession();
   const router = useRouter();
-
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -32,6 +29,7 @@ export default function Dashboard() {
       NProgress.start();
     };
   }, [pathname, searchParams]);
+
   // async function fetchData() {
 
   //   const res = await fetch(`${URL_API}/compressors/${session?.user?.id}`, {
@@ -50,9 +48,6 @@ export default function Dashboard() {
 
   // fetchData();
 
-  // if(status === 'unauthenticated') {
-  //   router.push('/signin')
-  // }
 
   if (status === 'unauthenticated'){
     router.push('/signin', { scroll: false })

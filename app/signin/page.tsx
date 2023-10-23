@@ -1,25 +1,22 @@
 'use client'
 
+import React from "react";
+import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react';
 import { ToastContainer, toast } from 'react-toastify';
 
 import Loading from '../../components/loading';
-
 import HeaderExp from '../../components/home/headerExp';
-import React from "react";
-import Link from 'next/link';
+
 
 import { useEffect } from 'react'
 import NProgress from 'nprogress'
 
-export const dynamic = 'force-static'
-
 export default function LoginPage() {
   const { status } = useSession();
   const router = useRouter();
-  
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -34,7 +31,7 @@ export default function LoginPage() {
 
   const [data, setData] = useState({
     email: '',
-    password: '',
+    password: ''
   });
 
   const loginUser = async (e: any) => {

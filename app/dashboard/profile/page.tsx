@@ -63,7 +63,6 @@ export default function Profile() {
         return (
             <>
                 <Header />
-
                 <div className="h-full p-10">
                     <div className="bg-white h-[400px] rounded-lg shadow-xl pb-8 mt-100">
                         <div className="w-full h-[200px]">

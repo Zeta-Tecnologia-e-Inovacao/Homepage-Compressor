@@ -34,24 +34,14 @@ const StyledTableRow = styled(TableRow)(({ theme }: any) => ({
   },
 }));
 
-function createData(
-  id: number,
-  name: string,
-  serial: number
-) {
-  return { id, name, serial };
-}
-
-
 export default function TableDashboard() {
 
   const [nameCompressor, setNameCompressor] = useState('')
   const [Serial, setSerial] = useState('')
-
   const { data: session } = useSession();
+
   const Origin = process.env.NEXT_PUBLIC_AWS_ORIGIN;
-
-
+  
   async function buscarDadosCompressor(){
     const resposta = await fetch(`${URL_API}/compressors/client/${session?.user.id}`, {
       method: 'GET',
@@ -64,20 +54,18 @@ export default function TableDashboard() {
     if(resposta.ok){
 
       const dadosCompressor = await resposta.json();
-
       console.log(dadosCompressor)
 
       const { name, serial_number }: any = dadosCompressor.data[0];
-
       setNameCompressor(name)
       setSerial(serial_number)
-
     } else {
       console.error('Erro ao buscar dados do compressor:', resposta.status);
     }
   } 
 
   buscarDadosCompressor();
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="customized table">
