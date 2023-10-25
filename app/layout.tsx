@@ -18,12 +18,12 @@ import { SessionProvider } from "next-auth/react"
 //   display: 'swap'
 // })
 
-const architects_daughter = Architects_Daughter({
-  subsets: ['latin'],
-  variable: '--font-architects-daughter',
-  weight: '400',
-  display: 'swap'
-})
+// const architects_daughter = Architects_Daughter({
+//   subsets: ['latin'],
+//   variable: '--font-architects-daughter',
+//   weight: '400',
+//   display: 'swap'
+// })
 
 export default function RootLayout({
   children,
