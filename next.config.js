@@ -3,7 +3,7 @@ const removeImports = require('next-remove-imports')();
 module.exports = {
   reactStrictMode: true,
   distDir: 'out',
-  appDir: true,
+  basePath: '/app',
 };
 
 module.exports = removeImports({});
