@@ -4,6 +4,7 @@ module.exports = {
   reactStrictMode: true,
   distDir: 'out',
   basePath: '/app',
+  ...removeImports
 };
 
 module.exports = removeImports({});
